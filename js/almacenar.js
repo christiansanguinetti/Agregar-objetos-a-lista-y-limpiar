@@ -5,15 +5,15 @@ function almacenamientoLocal() {
   const borrar = document.getElementById("limpiar");
 
   let almacenamiento = [];
-  if (localStorage.getItem("almacenar")) {
-    almacenamiento = JSON.parse(localStorage.getItem("almacenar"));
-  }
+  
+  if (localStorage.getItem("almacenar")) almacenamiento = JSON.parse(localStorage.getItem("almacenar"));
 
   function agregar() {
     if (nuevoitem.value) almacenamiento.push(nuevoitem.value);
     localStorage.setItem("almacenar", JSON.stringify(almacenamiento));
     almacenamiento = JSON.parse(localStorage.getItem("almacenar"));
   }
+
   function mostrar() {
     conteniner.innerHTML +=
       "<li>" + almacenamiento[almacenamiento.length - 1] + "</li>";
