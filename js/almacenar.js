@@ -5,8 +5,14 @@ function almacenamientoLocal() {
   const borrar = document.getElementById("limpiar");
 
   let almacenamiento = [];
-  
+
   if (localStorage.getItem("almacenar")) almacenamiento = JSON.parse(localStorage.getItem("almacenar"));
+
+  document.addEventListener("DOMContentLoaded", () => {    
+    for (elemento of JSON.parse(localStorage.getItem("almacenar"))) {
+      conteniner.innerHTML += "<li>" + elemento + "</li>";
+    }
+  });
 
   function agregar() {
     if (nuevoitem.value) almacenamiento.push(nuevoitem.value);
@@ -23,12 +29,6 @@ function almacenamientoLocal() {
     agregar();
     mostrar();
     nuevoitem.value = "";
-  });
-
-  document.addEventListener("DOMContentLoaded", () => {    
-    for (elemento of JSON.parse(localStorage.getItem("almacenar"))) {
-      conteniner.innerHTML += "<li>" + elemento + "</li>";
-    }
   });
 }
 
