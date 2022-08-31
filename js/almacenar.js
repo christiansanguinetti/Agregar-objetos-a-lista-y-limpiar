@@ -38,7 +38,6 @@ function limpiar() {
     borrar.addEventListener('click', () => {
         localStorage.removeItem("almacenar")
         conteiner.innerHTML = ""
-        almacenamiento = []
     }
     )
 }
