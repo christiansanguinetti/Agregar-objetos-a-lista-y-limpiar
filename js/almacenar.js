@@ -1,11 +1,11 @@
 const nuevoitem = document.getElementById('item');
 const boton = document.getElementById('agregar');
-const conteniner = document.getElementById('contenedor');
+const conteiner = document.getElementById('contenedor');
 const borrar = document.getElementById('limpiar');
 
 
 let almacenamiento = [];
-if (localStorage.getItem('almacenar')){
+if (localStorage.getItem('almacenar')) {
     almacenamiento = JSON.parse(localStorage.getItem('almacenar'))
 }
 
@@ -18,7 +18,7 @@ function agregar() {
 }
 function mostrar() {
 
-    conteniner.innerHTML += '<li>' + almacenamiento[almacenamiento.length - 1] + '</li>';
+    conteiner.innerHTML += '<li>' + almacenamiento[almacenamiento.length - 1] + '</li>';
 }
 boton.addEventListener('click', () => {
     agregar();
@@ -27,10 +27,19 @@ boton.addEventListener('click', () => {
 })
 
 document.addEventListener('DOMContentLoaded', () => {
-   for (elemento of JSON.parse(localStorage.getItem('almacenar'))) {
-        conteniner.innerHTML += '<li>' + elemento + '</li>';
+    if (localStorage.getItem("almacenar")) {
+        for (elemento of JSON.parse(localStorage.getItem('almacenar'))) {
+            conteiner.innerHTML += '<li>' + elemento + '</li>';
+        }
     }
-}) 
+})
 
-
-
+function limpiar() {
+    borrar.addEventListener('click', () => {
+        localStorage.removeItem("almacenar")
+        conteiner.innerHTML = ""
+        almacenamiento = []
+    }
+    )
+}
+limpiar()
